@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
+var events = require('events');
 
 // connect to database
 //mongoose.connect('mongodb://localhost/angular');
