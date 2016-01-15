@@ -1,0 +1,8 @@
+div(ng-controller="TeamsController")
+    br
+    div(ng-hide="loaded") Loading...
+    div(ng-show="loaded")
+        button(type="button" class="btn btn-sm btn-primary" ng-click="deleteTeam()") Delete
+        button(type="button" class="btn btn-sm btn-primary" ng-click="addTeam()") Add
+        button(type="button" class="btn btn-sm btn-primary" ng-click="editTeam()") Edit
+        div(ng-show="loaded" class="accountGridStyle" ng-grid="gridOptions")

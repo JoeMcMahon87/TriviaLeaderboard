@@ -1,0 +1,75 @@
+extends layout
+block extraHeader
+    link(href='/bootstrap/bootstrap.css' rel='stylesheet')
+    link(href='/bootstrap/bootstrap-spacelab.css' rel='stylesheet')
+    link(href='/ui-lightness/jquery-ui-1.10.4.css' rel='stylesheet')
+    link(href='/Site.css' rel='stylesheet')
+    link(href='ng-grid.css' rel='stylesheet')
+
+block content
+  .container
+  div(ng-init="rootapipath='#{rootapipath}'")
+  div(class="navbar navbar-default" role="navigation")
+      .container-fluid
+          .navbar-header
+              button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+                  span(class="sr-only") Toggle navigation
+                  span(class="icon-bar")
+                  span(class="icon-bar")
+                  span(class="icon-bar")
+              a(class="navbar-brand" href="#") Trivia Leaderboard
+  tabset
+      tab(heading="Teams")
+          include ../public/templates/tabTeam
+
+  script(type="text/ng-template" id="teamDlg.html")
+      .model-header
+          h3(class="modal-title") {{doThis}} Team 
+      .modal-body
+          form(name="form")
+              label Team Name:
+              input(ng-disabled="delete" required name="teamName" type="text" ng-model="team.Name")
+              span(ng-show="form.teamName.$error.required") Required
+              br
+              label Total Score:
+              input(ng-disabled="delete" required name="totalScore" is-number="0" ng-model="team.TotalScore")
+              br
+              label Blue / Gold:
+              input(ng-disabled="delete" required name="bgTeam" type="text" ng-model="team.BGTeam")
+              br
+              label Grades:
+              input(ng-disabled="delete" required name="grades" type="text" ng-model="team.Grades")
+              br
+              label Round 1:
+              input(ng-disabled="delete" required name="round1" is-number="0" ng-model="team.Round1")
+              br
+              label Round 2:
+              input(ng-disabled="delete" required name="round2" is-number="0" ng-model="team.Round2")
+              br
+              label Round 3:
+              input(ng-disabled="delete" required name="round3" is-number="0" ng-model="team.Round3")
+              br
+              label Round 4:
+              input(ng-disabled="delete" required name="round4" is-number="0" ng-model="team.Round4")
+              br
+              label Bonus:
+              input(ng-disabled="delete" required name="bonus" is-number="0" ng-model="team.Bonus")
+              br
+              label Puzzle:
+              input(ng-disabled="delete" required name="puzzle" is-number="0" ng-model="team.Puzzle")
+              br
+      .modal-footer
+              button(class=" btn btn-primary" ng-disabled="form.$invalid" ng-click="ok()") OK
+              button(class="btn btn-warning" ng-click="cancel()") Cancel
+
+    script(type="text/ng-template" id="lookupDlg.html")
+        .model-header
+            h3(class="modal-title") Lookup
+        .modal-body
+            form(name="lookup")
+                label Lookup Code:
+                input(required name="lookupCode" type="text" ng-model="result.lookupCode")
+                span(ng-show="lookup.lookupCode.$error.required") *
+        .modal-footer
+                button(class=" btn btn-primary" ng-disabled="lookup.$invalid" ng-click="ok()") OK
+                button(class="btn btn-warning" ng-click="cancel()") Cancel

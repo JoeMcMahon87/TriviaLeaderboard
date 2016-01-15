@@ -1,0 +1,8 @@
+div(ng-controller="AccountController")
+    br
+    div(ng-hide="loaded") Loading...
+    div(ng-show="loaded")
+        button(type="button" class="btn btn-sm btn-primary" ng-click="deleteAccount()") Delete
+        button(type="button" class="btn btn-sm btn-primary" ng-click="addAccount()") Add
+        button(type="button" class="btn btn-sm btn-primary" ng-click="editAccount()") Edit
+        div(ng-show="loaded" class="accountGridStyle" ng-grid="gridOptions")
