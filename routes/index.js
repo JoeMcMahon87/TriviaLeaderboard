@@ -197,8 +197,10 @@ var processUpdate = function updateBoard() {
          return b.score - a.score;
       });
 
-      console.log(teams);
-      eventEmitter.emit('refresh', teams);      
+      eventEmitter.emit('refresh', {
+	'teams' : teams,
+	'colors' : colorTeams,
+	'grades' : gradeTeams });      
    });
 }
 

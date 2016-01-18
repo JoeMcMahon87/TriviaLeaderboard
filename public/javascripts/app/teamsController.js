@@ -6,8 +6,8 @@ app.controller('TeamsController', function ($scope, $log, $modal, $window, Resta
     var eventName = "scoresUpdated";
 
     socket.on(eventName,function(msg){
-        getTeams();
-        socket.emit("refresh", "refresh");
+       getTeams();
+       socket.emit("refresh", "refresh");
     });
 
     teamsRepo.init($scope.rootapipath);

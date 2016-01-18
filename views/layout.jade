@@ -10,8 +10,6 @@ html
 
   body(ng-app='app')
 
-    block content
-
     script(src='/javascripts/underscore.js')
     script(src='/javascripts/modernizr-2.6.2.js')
     script(src='/javascripts/jquery-1.10.2.js')
@@ -21,18 +19,11 @@ html
     script(src='/javascripts/angularui-date/date.js')
     script(src='/javascripts/ui-bootstrap-tpls-0.11.0.js')
     script(src='/javascripts/restangular.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/leaderboard.js')
     script(src='/javascripts/app/app.js')
     script(src='/javascripts/app/appGlobals.js')
     script(src='/javascripts/app/teamsController.js')
     script(src='/javascripts/ng-grid-2.0.11.debug.js')
-    script(src='/socket.io/socket.io.js')
-    script.
-       var socket = io.connect('http://stoneridgesummercampus.org:8321');
-       socket.on('connect', function(data) {
-          console.log('Connected to server');
-          socket.emit('join', 'Hello from client');
-          socket.on('update', function(info) {
-             console.log(info);
-          });
-       });
 
+    block content
