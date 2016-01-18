@@ -204,7 +204,7 @@ var processUpdate = function updateBoard() {
    });
 }
 
-eventEmitter.on('update', processUpdate);
+eventEmitter.once('update', processUpdate);
 var io = require('socket.io').listen(8321);
 
 io.on('connection', function(client) {
@@ -212,7 +212,7 @@ io.on('connection', function(client) {
    client.on('join', function(data) {
       console.log(data);
    });
-   eventEmitter.on('refresh', function(data) {
+   eventEmitter.once('refresh', function(data) {
       client.emit('update', data);
    });
 });

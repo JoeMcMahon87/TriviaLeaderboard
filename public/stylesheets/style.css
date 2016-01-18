@@ -12,6 +12,7 @@ a {
   vertical-align: top;
   font-weight: bold;
   font-size: 5.0vw;
+  color: #fff;
 }
 .team-score {
   vertical-align: top;
@@ -54,4 +55,25 @@ a {
 }
 .center {
   text-align: center;
+}
+.vertical-title {
+  position: absolute;
+  margin-left: 35px;
+  float: left;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin:    0 0;
+  -ms-transform-origin:     0 0;
+  -o-transform-origin:      0 0;
+
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+.spacer {
+  background-color: #333;
+} 
+.bucket {
+  overflow: hidden;
+  height: 90vh;
 }
