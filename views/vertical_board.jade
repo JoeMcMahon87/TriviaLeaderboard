@@ -1,0 +1,31 @@
+extends layout
+
+block extraHeader
+  link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  link(rel='stylesheet', href='/stylesheets/MetroJs.min.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+block content
+  .container
+  h1.center Leaderboard
+  div.container-fluid(ng-init="teams = #{JSON.stringify(teams)}; grades = #{JSON.stringify(grades)}; colors = #{JSON.stringify(colors)};")
+    div.tile
+       div.team-name(ng-repeat="team in teams" id="team_{{team._id}}")
+          span.righty.team-score(id="score_{{team._id}}")
+             | {{team.TotalScore}}
+          a(href='/team/{{team._id}}' id="name_{{team._id}}") {{team.Name}}
+    div.row-fluid
+       div.span5.tile
+         h2.center Blue v Gold
+         div.color-name(ng-repeat="cteam in colors" id="cteam_{{cteam.name}}")
+            span.color-score(class="{{cteam.name}}")
+               span.righty.color-score(id="colorscore_{{cteam.name}}")
+                  | {{cteam.score}} 
+               | {{cteam.name}} 
+       div.span2.tile.center.spacer
+       div.span5.tile.center
+         h2.center.vertical-title Classes
+         div.grade-name(ng-repeat="grade in grades" id="grade_{{grade.name}}")
+            span.righty.grade-score(id="gradescore_{{grade.name}}")
+               | {{grade.score}} 
+            | {{grade.name}} 
