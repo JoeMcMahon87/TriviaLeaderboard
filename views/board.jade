@@ -14,7 +14,7 @@ block content
           div.team-name(ng-repeat="team in teams" id="team_{{team._id}}" title="{{team.Name}}")
              span.righty.team-score(id="score_{{team._id}}")
                 | {{team.TotalScore}}
-             {{team.Name}}
+             | {{team.Name}}
        div.span4
          div.tile
             h2.center Blue v Gold

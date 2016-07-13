@@ -55,15 +55,16 @@ var processUpdate = function(data) {
 
 
 //$('window').load(function() {
-   var socket = io.connect('http://stoneridgesummercampus.org:8321');
+// Change to host
+   var socket = io.connect('http://localhost:8321');
    socket.on('connect', function(data) {
       console.log('Connected to server');
       socket.emit('join', 'Hello from client');
       socket.on('update', function(info) {
          if (info != null) {
-            // console.log(info);
             processUpdate(info);
          }
+         location.reload();
       });
    });
 //});

@@ -114,24 +114,27 @@ router.post('/api/Team', function(req,res) {
             if (err) {
                 res.send(500,err);
             }
-	    team.Name = req.body.Name;
-	    team.TotalScore = (req.body.Round1*1 + req.body.Round2*1 + req.body.Round3*1 + req.body.Round4*1 + req.body.Bonus*1 + req.body.Puzzle*1);
-	    team.BGTeam = req.body.BGTeam;
-	    team.Grades = req.body.Grades;
-	    team.Round1 = req.body.Round1;
-	    team.Round2 = req.body.Round2;
-	    team.Round3 = req.body.Round3;
-	    team.Round4 = req.body.Round4;
-	    team.Bonus = req.body.Bonus;
-	    team.Puzzle = req.body.Puzzle;
+	        team.Name = req.body.Name;
+	        team.TotalScore = (req.body.Round1*1 + req.body.Round2*1 + req.body.Round3*1 + req.body.Round4*1 + req.body.Bonus*1 + req.body.Puzzle*1);
+	        team.BGTeam = req.body.BGTeam;
+	        team.Grades = req.body.Grades;
+	        team.Round1 = req.body.Round1;
+	        team.Round2 = req.body.Round2;
+	        team.Round3 = req.body.Round3;
+	        team.Round4 = req.body.Round4;
+	        team.Bonus = req.body.Bonus;
+	        team.Puzzle = req.body.Puzzle;
 
             team.save(function(err){
                 if (err) {
                     res.status(500,err);
                 }
-                eventEmitter.emit('update');
-                eventEmitter.emit('refresh');
-                res.json(team);
+
+                Teams.find(function(err,teams) {
+                    eventEmitter.emit('update', teams);
+                    eventEmitter.emit('refresh');
+                    res.json(team);
+                });
             });
         });
     }
@@ -181,7 +184,7 @@ var processUpdate = function updateBoard() {
             }
             gradeTeams[grades[g]].score += teams[i].TotalScore;
          }
-      } 
+      }
       for (var loop = 0; loop < gradeTeams.length; loop++) {
          if (gradeTeams[loop] == null) {
             gradeTeams.splice(loop, 1);
@@ -198,10 +201,10 @@ var processUpdate = function updateBoard() {
       });
 
       eventEmitter.emit('refresh', {
-	'teams' : teams,
-	'colors' : colorTeams,
-	'grades' : gradeTeams });      
-   });
+	    'teams' : teams,
+	    'colors' : colorTeams,
+	    'grades' : gradeTeams });
+      });
 }
 
 eventEmitter.once('update', processUpdate);
