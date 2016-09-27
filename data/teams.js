@@ -6,11 +6,11 @@ var Team = mongoose.model('teams', new mongoose.Schema({
     BGTeam     	 :String,
     Grades       :String,
     Round1       :Number,
+    Puzzle1       :Number,
     Round2       :Number,
-    Round3       :Number,
-    Round4       :Number,
-    Bonus        :Number,
-    Puzzle       :Number
+    Puzzle2       :Number,
+    Round3        :Number,
+    Puzzle3       :Number
 }));
 
 module.exports = Team;

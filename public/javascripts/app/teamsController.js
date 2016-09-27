@@ -43,11 +43,11 @@ app.controller('TeamsController', function ($scope, $log, $modal, $window, Resta
                      { field: 'BGTeam', displayName: 'Blue / Gold' },
                      { field: 'Grades', displayName: 'Grades' },
                      { field: 'Round1', displayName: 'Round 1' },
+                     { field: 'Puzzle1', displayName: 'Puzzle 1' },
                      { field: 'Round2', displayName: 'Round 2' },
+                     { field: 'Puzzle2', displayName: 'Puzzle 2' },
                      { field: 'Round3', displayName: 'Round 3' },
-                     { field: 'Round4', displayName: 'Round 4' },
-                     { field: 'Bonus', displayName: 'Bonus' },
-                     { field: 'Puzzle', displayName: 'Puzzle' }
+                     { field: 'Puzzle3', displayName: 'Puzzle 3' }
         ]
     };
 
@@ -104,9 +104,9 @@ app.controller('TeamsController', function ($scope, $log, $modal, $window, Resta
 		Round1: 0,
 		Round2: 0,
 		Round3: 0,
-		Round4: 0,
-		Bonus: 0,
-		Puzzle: 0
+		Puzzle1: 0,
+		Puzzle2: 0,
+		Puzzle3: 0
             };
         }
         else

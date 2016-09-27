@@ -24,9 +24,9 @@ router.get('/board', function(req, res) {
          teams[i].TotalScore = teams[i].Round1 +
 		teams[i].Round2 +
 		teams[i].Round3 +
-		teams[i].Round4 +
-		teams[i].Bonus +
-		teams[i].Puzzle;
+		teams[i].Puzzle1 +
+		teams[i].Puzzle2 +
+		teams[i].Puzzle3;
 
          if ((teams[i].BGTeam == 'Blue') || (teams[i].BGTeam == 'Both')) {
             if (!colorTeams[0]) {
@@ -56,6 +56,9 @@ router.get('/board', function(req, res) {
             gradeTeams[loop].name = names[gradeTeams[loop].name];
          }
       }
+      teams.sort(function(a,b) {
+          return b.TotalScore - a.TotalScore;
+      });
       colorTeams.sort(function(a,b) {
          return b.score - a.score;
       });
@@ -94,9 +97,9 @@ router.post('/api/Team', function(req,res) {
 	    Round1 : 0,
 	    Round2 : 0,
 	    Round3 : 0,
-	    Round4 : 0,
-	    Bonus : 0,
-	    Puzzle : 0
+	    Puzzle1 : 0,
+	    Puzzle2 : 0,
+	    Puzzle3 : 0
         });
         team.save(function(err){
            if (err) {
@@ -115,15 +118,15 @@ router.post('/api/Team', function(req,res) {
                 res.send(500,err);
             }
 	        team.Name = req.body.Name;
-	        team.TotalScore = (req.body.Round1*1 + req.body.Round2*1 + req.body.Round3*1 + req.body.Round4*1 + req.body.Bonus*1 + req.body.Puzzle*1);
+	        team.TotalScore = (req.body.Round1*1 + req.body.Round2*1 + req.body.Round3*1 + req.body.Puzzle1*1 + req.body.Puzzle2*1 + req.body.Puzzle3*1);
 	        team.BGTeam = req.body.BGTeam;
 	        team.Grades = req.body.Grades;
 	        team.Round1 = req.body.Round1;
 	        team.Round2 = req.body.Round2;
 	        team.Round3 = req.body.Round3;
-	        team.Round4 = req.body.Round4;
-	        team.Bonus = req.body.Bonus;
-	        team.Puzzle = req.body.Puzzle;
+	        team.Puzzle1 = req.body.Puzzle1;
+	        team.Puzzle2 = req.body.Puzzle2;
+	        team.Puzzle3 = req.body.Puzzle3;
 
             team.save(function(err){
                 if (err) {
@@ -161,9 +164,9 @@ var processUpdate = function updateBoard() {
          teams[i].TotalScore = teams[i].Round1 +
 		teams[i].Round2 +
 		teams[i].Round3 +
-		teams[i].Round4 +
-		teams[i].Bonus +
-		teams[i].Puzzle;
+		teams[i].Puzzle1 +
+		teams[i].Puzzle2 +
+		teams[i].Puzzle3;
 
          if ((teams[i].BGTeam == 'Blue') || (teams[i].BGTeam == 'Both')) {
             if (!colorTeams[0]) {
@@ -193,6 +196,9 @@ var processUpdate = function updateBoard() {
             gradeTeams[loop].name = names[gradeTeams[loop].name];
          }
       }
+      teams.sort(function(a,b) {
+          return b.TotalScore - a.TotalScore;
+      });
       colorTeams.sort(function(a,b) {
          return b.score - a.score;
       });

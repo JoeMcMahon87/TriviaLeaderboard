@@ -9,14 +9,14 @@ var index = require('./routes/index');
 var events = require('events');
 
 // connect to database
-//mongoose.connect('mongodb://localhost/angular');
+//mongoose.connect('mongodb://localhost/leaderboard');
 if (process.env.MONGOLAB_URI) {
     console.log("Connecting to mongolab...");
     mongoose.connect(process.env.MONGOLAB_URI);
 }
 else {
     console.log("Connecting to localhost...");
-    mongoose.connect('mongodb://localhost/angular');
+    mongoose.connect('mongodb://localhost/leaderboard');
 }
 
 // Setup express app
