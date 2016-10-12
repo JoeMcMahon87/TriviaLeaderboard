@@ -56,7 +56,7 @@ var processUpdate = function(data) {
 
 //$('window').load(function() {
 // Change to host
-   var socket = io.connect('http://localhost:8321');
+   var socket = io.connect('http://stoneridgesummercampus.org:8321');
    socket.on('connect', function(data) {
       console.log('Connected to server');
       socket.emit('join', 'Hello from client');
