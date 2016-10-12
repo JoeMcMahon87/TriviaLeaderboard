@@ -170,12 +170,12 @@ var processUpdate = function updateBoard() {
 
          if ((teams[i].BGTeam == 'Blue') || (teams[i].BGTeam == 'Both')) {
             if (!colorTeams[0]) {
-               colorTeams[0] = { "name" : teams[i].BGTeam, "score": 0};
+               colorTeams[0] = { "name" : "Blue", "score": 0};
             }
             colorTeams[0].score += teams[i].TotalScore;
          } else if ((teams[i].BGTeam == 'Gold') || (teams[i].BGTeam == 'Both')) {
             if (!colorTeams[1]) {
-               colorTeams[1] = { "name" : teams[i].BGTeam, "score": 0};
+               colorTeams[1] = { "name" : "Gold", "score": 0};
             }
             colorTeams[1].score += teams[i].TotalScore;
          }
