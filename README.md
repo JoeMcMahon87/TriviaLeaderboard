@@ -6,13 +6,12 @@ As users edit the account list other users will see the account list updates.
 #### Start Mongo in a command window
 Requires MongoDB to be running first. 
 Run 'mongod' bash script in the root project folder. 
-If you already have `mongod` running on port 27017, you'll need to stop that 
+If you already have `mongod` running on port 27017, you might want to stop that 
 process, or choose a unique port for the startup parameter in the `./mongod` script.
 
 Execute:
 
 ```
-> cd /angularExample
 > ./mongod
 ```
 
@@ -21,7 +20,6 @@ Run the `seeddb` script in the root project folder.
 
 Execute:
 ```
-> cd /angularExample
 > ./seeddb
 ```
 
